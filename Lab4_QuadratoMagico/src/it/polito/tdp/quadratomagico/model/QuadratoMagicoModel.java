@@ -31,13 +31,13 @@ public class QuadratoMagicoModel {
 		for (int i = 1; i <= 9; i++) {
 			if (!contains(quadrato, i)) {
 				quadrato.setCasella(riga, col, i);
-				/*int[][] temp = */ricorsione(quadrato, level + 1);
-//				if (temp != null)
-//					return temp;
+				int[][] temp = ricorsione(quadrato, level + 1);
+				if (temp != null)
+					return temp;
 				quadrato.setCasella(riga, col, 0);
 			} 
 		}
-		return quadrato.getQuadrato();
+		return null;
 	}
 	
 
@@ -45,6 +45,7 @@ public class QuadratoMagicoModel {
 		int sommaRiga[] = new int[quadrato.getLato()];
 		int sommaCol[] = new int[quadrato.getLato()];
 		int sommaDiagonale = 0;
+		int sommaDiagonale2 = 0;
 
 	
 
@@ -68,6 +69,25 @@ public class QuadratoMagicoModel {
 			}
 				
 		}	
+		
+		
+		for(int n=0; n<quadrato.getLato(); n++) {
+			sommaDiagonale += quadrato.getCasella(n, n);	
+		}
+		if(sommaDiagonale!= quadrato.getNumMagico()) {
+			return false;
+		}
+		
+		
+		int m = quadrato.getLato()-1;
+		for(int n=0; n<quadrato.getLato(); n++) {
+			sommaDiagonale2 += quadrato.getCasella(n, m);
+			m--;
+
+		}
+		if(sommaDiagonale2!= quadrato.getNumMagico()) {
+			return false;
+		}
 		
 		
 		
