@@ -31,14 +31,15 @@ public class QuadratoMagicoModel {
 		for (int i = 1; i <= 9; i++) {
 			if (!contains(quadrato, i)) {
 				quadrato.setCasella(riga, col, i);
-				int[][] temp = ricorsione(quadrato, level + 1);
-				if (temp != null)
-					return temp;
+				/*int[][] temp = */ricorsione(quadrato, level + 1);
+//				if (temp != null)
+//					return temp;
 				quadrato.setCasella(riga, col, 0);
-			}
+			} 
 		}
 		return quadrato.getQuadrato();
 	}
+	
 
 	public boolean filtro(QuadratoMagico quadrato) {
 		int sommaRiga[] = new int[quadrato.getLato()];
@@ -69,6 +70,8 @@ public class QuadratoMagicoModel {
 		}	
 		
 		
+		
+		
 		return true;
 	}
 	
@@ -78,11 +81,11 @@ public class QuadratoMagicoModel {
 			for (int j = 0; j < quadrato.getLato(); j++) {
 
 				if (quadrato.getCasella(i, j) == num) {
-					return false;
+					return true;
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 	
 	
